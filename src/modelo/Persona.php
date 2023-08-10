@@ -5,28 +5,35 @@ namespace Leandro\app\modelo;
 use PDOException;
 use Leandro\app\libs\Conexion;
 
-class Casa
+class Persona
 {
-  private $nombre;
   private $id;
+  private $nombre;
 
-  public function __construct($nombre, $id)
+  public function __construct($id, $nombre)
   {
-    $this->nombre = $nombre;
     $this->id = $id;
-    
+    $this->nombre = $nombre;
   }
-  public function agregarPersona(){
+
+
+  public static function arrayAPersona($row)
+  {
+    $persona = new Persona($row['id'], $row['nombre']);
+    return $persona;
+  }
+
+  public function agregarPersona()
+  {
     $pdo = null;
     $query = null;
     $pdo = Conexion::getConexion()->getPdo();
     $idd = -1;
     try {
-      $query      = $pdo->prepare('INSERT INTO casas
-      (id, numero, calle)
-VALUES(:id,:numero,:calle)');
-      $query->bindParam(':id', $this->id);
-      $query->bindParam(':numero', $this->numero);
+      $query      = $pdo->prepare('INSERT INTO personas
+      (nomnbre)
+VALUES(:nombre)');
+      $query->bindParam(':nombre', $this->nombre);
       if ($query->execute()) {
         $idd = $pdo->lastInsertId();
       }
@@ -43,9 +50,30 @@ VALUES(:id,:numero,:calle)');
     return $this->nombre;
   }
 
-  public function getid()
+  public function getId()
   {
     return $this->id;
   }
 
+  public function getById($id)
+  {
+    $pdo = null;
+    $query = null;
+    $persona= null;
+    $pdo = Conexion::getConexion()->getPdo();
+    try {
+      $query      = $pdo->prepare('SELECT id, nombre FROM persona p where p.id=:id');
+      $query->bindParam(':id', $id);
+      while ($row = $query->fetch()) {
+        $persona = self::arrayAPersona($row);
+
+        //$item->url = isset($row['url']) ? $row['url'] : $urlDefecto;
+      }
+      return $persona;
+    } catch (PDOException $th) {
+      //throw $th;
+    } finally {
+      $pdo = null;
+    }
+  }
 }
