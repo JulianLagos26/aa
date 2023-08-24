@@ -27,8 +27,12 @@ use Leandro\app\modelo\Persona;
 ;?>
     </select>
     <br>
-    <label for="codigo">casa</label>
-    <input type="text" value="casa" name="casa" id="casa" required>
+    <select name="casa" id="">
+      <?php foreach ($this->datos->casas as $casa) {?>
+      <option value="<?=$casa->getId();?>"><?=$casa->getCalle() . $casa->getNumero();?></option>
+      <?php }
+;?>
+    </select>
     <br>
     <input type="submit" value="Enviar">
     <br>

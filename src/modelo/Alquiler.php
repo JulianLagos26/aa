@@ -57,13 +57,12 @@ class Alquiler
         $pdo   = Conexion::getConexion()->getPdo();
         $idd   = -1;
         try {
-            $query = $pdo->prepare('INSERT INTO `alquiler`
-      (`persona_id`, `casa_id`, `duracionMeses`, `costo`)
-      VALUES (:persona, :casa, :duracion, :costo);
-      ');
-            $query->bindParam(':persona', $persona->getId());
-            $query->bindParam(':casa', $casa->getId());
-            $query->bindParam(':duracionMeses', $duracion);
+            $query = $pdo->prepare('INSERT INTO alquiler
+      (persona_id, casa_id, duracionMeses, costo)
+      VALUES (:persona, :casa, :duracion, :costo)');
+            $query->bindParam(':persona', $persona);
+            $query->bindParam(':casa', $casa);
+            $query->bindParam(':duracion', $duracion);
             $query->bindParam(':costo', $costo);
             if ($query->execute()) {
                 $idd = $pdo->lastInsertId();
@@ -81,7 +80,7 @@ class Alquiler
         $pdo   = null;
         $query = null;
         $pdo   = Conexion::getConexion()->getPdo();
-        $lista=[];
+        $lista = [];
 
         try {
             $query = $pdo->query('SELECT p.id as idP, p.nombre, c.id as idC, a.id as idA, c.calle,c.numero,a.duracionMeses,a.costo FROM alquiler a
@@ -89,7 +88,7 @@ class Alquiler
       INNER JOIN casa c ON a.casa_id = c.id');
 
             while ($row = $query->fetch()) {
-                $casa = self::arrayAlquiler($row);
+                $casa    = self::arrayAlquiler($row);
                 $lista[] = $casa;
 
             }

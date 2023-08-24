@@ -1,8 +1,9 @@
 <?php
 
-use Leandro\app\modelo\Persona;
-use Leandro\app\modelo\Alquiler;
 use Leandro\app\libs\Controlador;
+use Leandro\app\modelo\Alquiler;
+use Leandro\app\modelo\Casa;
+use Leandro\app\modelo\Persona;
 
 class Alquiler_Controller extends Controlador
 {
@@ -11,6 +12,7 @@ class Alquiler_Controller extends Controlador
     {
         $res           = new stdClass();
         $res->personas = Persona::listar();
+        $res->casas    = Casa::listar();
         $this->cargarVista("alquiler/nuevo", $res);
     }
     public function alquilar()
