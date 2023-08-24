@@ -2,10 +2,11 @@
 
 namespace Leandro\app\modelo;
 
-use Leandro\app\libs\Conexion;
 use PDOException;
+use JsonSerializable;
+use Leandro\app\libs\Conexion;
 
-class Persona
+class Persona implements JsonSerializable
 {
     private $id;
     private $nombre;
@@ -100,9 +101,16 @@ VALUES(:nombre)');
 
             return $lista;
         } catch (PDOException $th) {
-            //throw $th;
+            throw $th;
         } finally {
             $pdo = null;
         }
+    }
+    public function JsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'nombre' => $this->nombre,
+        ];
     }
 }

@@ -1,0 +1,39 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "test",
+    "dateExported": "2023-08-24T23:29:54.447Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f203209f-dc75-4fc5-8bae-c0c75e6dca4c",
+            "colId": "ffb00a9c-63c5-436a-bb83-a12b07a96b23",
+            "containerId": "",
+            "name": "http://localhost/pppp/aa/index.php?c=Api_Persona&m=listar",
+            "url": "http://localhost/pppp/aa/index.php?c=Api_Persona&m=listar",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-08-24T23:29:38.752Z",
+            "modified": "2023-08-24T23:29:38.752Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "c",
+                    "value": "Api_Persona",
+                    "isPath": false
+                },
+                {
+                    "name": "m",
+                    "value": "listar",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
