@@ -10,9 +10,10 @@
 <body>
 
   <form action="index.php?c=Persona&m=agregarPersona" method="post">
-    <input type="text" value="" name="nombre" id="nombre" required>
-    <input type="number" name="id" id="id" required>
-    <input type="submit" name="" id="">
+    <label for="codigo">nombre</label>
+    <input type="text" value="nombre" name="nombre" id="nombre" required>
+    <input type="submit" value="Enviar">
+    <br>
   </form>
 
 </body>

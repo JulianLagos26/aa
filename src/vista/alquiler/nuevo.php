@@ -1,3 +1,4 @@
+use Leandro\app\modelo\Persona;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,22 +9,29 @@
 </head>
 
 <body>
-  <h1>agregar producto</h1>
-  <?php
-  require 'src/vista/menu.php'; ?>
-  <form action="index.php?c=producto&m=crear" method="post">
-    <label for="codigo">Duracion</label>
-    <input type="number" name="Duracion" id="Duracion" value="Duracion">
+
+  <form action="index.php?c=alquiler&m=alquilar" method="post">
+    <label for="codigo">duracionMeses</label>
+    <input type="text" value="duracionMeses" name="duracionMeses" id="duracionMeses" required>
     <br>
-    <label for="descripcion">Costo</label>
-    <input type="number" name="Costo" id="Costo" value="Costo">
+    <label for="codigo">costo</label>
+    <input type="text" value="costo" name="costo" id="costo" required>
     <br>
-    <label for="precio">Persona</label>
-    <input type="text" name="Persona" id="Persona" value="Persona">
+
+    <!-- listar personas -->
+
+    <select name="persona" id="">
+      <?php foreach ($this->datos->personas as $persona) {?>
+      <option value="<?=$persona->getId();?>"><?=$persona->getNombre();?></option>
+      <?php }
+;?>
+    </select>
     <br>
-    <label for="fecha">Casa</label>
-    <input type="text" name="Casa" id="Casa" value="Casa">
+    <label for="codigo">casa</label>
+    <input type="text" value="casa" name="casa" id="casa" required>
+    <br>
     <input type="submit" value="Enviar">
+    <br>
   </form>
 
 </body>

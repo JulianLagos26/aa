@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <h1>Nuevo producto</h1>
+  <h1>Nuevo persona</h1>
   <?php
   require 'src/vista/menu.php'; ?>
   <p><?= $this->datos; ?></p>

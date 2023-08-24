@@ -21,13 +21,13 @@
       <th>precio</th>
       <th>fecha</th>
     </tr>
-    <?php foreach ($this->datos as $producto) { ?>
+    <?php foreach ($this->datos as $alquiler) { ?>
     <tr>
-      <td><?= $producto->getId(); ?></td>
-      <td><?= $producto->getCodigo(); ?></td>
-      <td><?= $producto->getDescripcion(); ?></td>
-      <td><?= $producto->getPrecio(); ?></td>
-      <td><?= $producto->getFecha(); ?></td>
+      <td><?= $alquiler->getPersona(); ?></td>
+      <td><?= $alquiler->getCasa(); ?></td>
+      <td><?= $alquiler->getduracionMeses(); ?></td>
+      <td><?= $alquiler->getCosto(); ?></td>
+      <td><?= $alquiler->getFecha(); ?></td>
     </tr>
     <?php }; ?>
   </table>
